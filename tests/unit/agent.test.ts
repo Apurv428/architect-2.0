@@ -3,6 +3,7 @@ import { generateCode } from "@/lib/agent/codegen";
 import { compileAgent, redact, systemPrompt } from "@/lib/agent/compile";
 import { graphFromPlan } from "@/lib/agent/seed";
 import { demoPlan } from "@/lib/ai/demo";
+import { getFramework } from "@/lib/catalog";
 
 const plan = demoPlan("", "Support", "support-triage");
 
@@ -51,7 +52,13 @@ describe("generateCode", () => {
   it("uses the OpenAI class for GPT models", () => {
     expect(generateCode({ ...spec, model: "gpt-5.5" }, "langgraph")).toContain("ChatOpenAI");
   });
-  it("emits valid JSON for the Lyzr blueprint", () => {
-    expect(() => JSON.parse(generateCode(spec, "lyzr-adk"))).not.toThrow();
+  it("emits valid JSON for the JSON blueprint", () => {
+    expect(() => JSON.parse(generateCode(spec, "blueprint"))).not.toThrow();
+  });
+  it("treats a framework id it does not list as the JSON blueprint", () => {
+    expect(getFramework("retired-id")).toMatchObject({ id: "blueprint", name: "JSON blueprint" });
+    expect(getFramework(null).id).toBe("blueprint");
+    expect(getFramework("crewai").name).toBe("CrewAI");
+    expect(() => JSON.parse(generateCode(spec, "retired-id"))).not.toThrow();
   });
 });

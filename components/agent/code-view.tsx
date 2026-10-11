@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { generateCode, FRAMEWORK_LANG } from "@/lib/agent/codegen";
 import { compileAgent } from "@/lib/agent/compile";
-import { FRAMEWORKS } from "@/lib/catalog";
+import { getFramework } from "@/lib/catalog";
 import { useTheme } from "@/lib/theme";
 import { useWorkspace } from "@/lib/workspace/store";
 
@@ -23,13 +23,13 @@ const Editor = dynamic(() => import("@monaco-editor/react").then((m) => m.Editor
 export function CodeView() {
   const agent = useWorkspace((s) => s.agent)!;
   const theme = useTheme();
-  const code = useMemo(() => generateCode(compileAgent(agent.graph, agent.name), agent.framework), [agent]);
-  const framework = FRAMEWORKS.find((f) => f.id === agent.framework)?.name ?? agent.framework;
+  const framework = getFramework(agent.framework);
+  const code = useMemo(() => generateCode(compileAgent(agent.graph, agent.name), framework.id), [agent, framework.id]);
 
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex h-9 shrink-0 items-center gap-2 border-b px-3 text-xs text-muted-foreground">
-        Generated {framework} starter — updates live as you edit the canvas
+        Generated {framework.name} starter — updates live as you edit the canvas
         <Button
           size="xs"
           variant="ghost"
@@ -42,7 +42,7 @@ export function CodeView() {
       <div className="min-h-0 flex-1">
         <Editor
           theme={theme === "dark" ? "vs-dark" : "light"}
-          language={FRAMEWORK_LANG[agent.framework] ?? "python"}
+          language={FRAMEWORK_LANG[framework.id] ?? "python"}
           value={code}
           options={{ readOnly: true, minimap: { enabled: false }, fontSize: 12.5, scrollBeyondLastLine: false, automaticLayout: true, padding: { top: 12 } }}
         />

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Bot, BookOpen, Globe, ShieldCheck, Wrench } from "lucide-react";
 import { compileAgent } from "@/lib/agent/compile";
 import { MODELS, TOOL_CATALOG, type AgentGraph } from "@/lib/agent/types";
-import { FRAMEWORKS } from "@/lib/catalog";
+import { getFramework } from "@/lib/catalog";
 import { getUser } from "@/lib/supabase/server";
 import { timeAgo } from "@/lib/time";
 
@@ -43,7 +43,7 @@ export default async function AgentsPage() {
           {agents.map((a) => {
             const spec = compileAgent(a.graph, a.name);
             const model = MODELS.find((m) => m.id === spec.model)?.label ?? spec.model;
-            const framework = FRAMEWORKS.find((f) => f.id === a.framework)?.name ?? a.framework;
+            const framework = getFramework(a.framework).name;
             const runs = a.runs?.[0]?.count ?? 0;
             return (
               <Link

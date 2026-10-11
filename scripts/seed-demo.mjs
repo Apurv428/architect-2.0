@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * Seed the demo account with 3 polished projects so reviewers see a populated
- * dashboard immediately after login.
+ * Seed the demo account with 3 polished projects so the dashboard looks lived-in
+ * immediately after login.
  *
  * Usage:
  *   SUPABASE_URL=https://xxx.supabase.co \
@@ -385,7 +385,7 @@ async function main() {
       project_id: p1Id,
       owner_id: userId,
       name: "Triage Agent",
-      framework: "lyzr-adk",
+      framework: "blueprint",
       model: "claude-opus-5",
       graph: makeGraph("Triage", "slack_message", "You are a support ticket triage agent. Classify each ticket by priority (Critical/High/Medium/Low) and category, then notify the support team via Slack."),
       created_at: ago(3),
@@ -562,7 +562,7 @@ async function main() {
       project_id: p3Id,
       owner_id: userId,
       name: "Q&A Agent",
-      framework: "lyzr-adk",
+      framework: "blueprint",
       model: "claude-opus-5",
       graph: makeGraph("Q&A", "web_search", "You are a document Q&A assistant. Answer questions using only the provided knowledge base. Always cite the source document name and page number. If the answer is not in the documents, say so clearly."),
       created_at: ago(7),

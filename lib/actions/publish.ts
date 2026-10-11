@@ -2,6 +2,7 @@
 
 import { generateCode, FRAMEWORK_LANG } from "@/lib/agent/codegen";
 import { compileAgent } from "@/lib/agent/compile";
+import { getFramework } from "@/lib/catalog";
 import type { AgentGraph } from "@/lib/agent/types";
 import type { FileMap } from "@/lib/ai/schema";
 import { GitHubError, gh, githubToken } from "@/lib/github";
@@ -32,8 +33,9 @@ async function loadProject(projectId: string) {
 }
 
 function agentFile(agent: { name: string; framework: string; graph: AgentGraph }): PublishFile {
-  const ext = FRAMEWORK_LANG[agent.framework] === "json" ? "json" : "py";
-  return { path: `architect/agent/${agent.framework}.${ext}`, content: generateCode(compileAgent(agent.graph, agent.name), agent.framework) };
+  const framework = getFramework(agent.framework).id;
+  const ext = FRAMEWORK_LANG[framework] === "json" ? "json" : "py";
+  return { path: `architect/agent/${framework}.${ext}`, content: generateCode(compileAgent(agent.graph, agent.name), framework) };
 }
 
 function buildFiles(

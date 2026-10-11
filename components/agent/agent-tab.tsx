@@ -24,7 +24,7 @@ import { graphFromPlan } from "@/lib/agent/seed";
 import { DEFAULT_CONFIG, KIND_META, TOOL_CATALOG, type GraphEdge, type GraphNode, type NodeKind } from "@/lib/agent/types";
 import { updateAgent, useAgentUi } from "@/lib/agent/use-agent";
 import type { Plan } from "@/lib/ai/schema";
-import { FRAMEWORKS } from "@/lib/catalog";
+import { FRAMEWORKS, getFramework } from "@/lib/catalog";
 import { useWorkspace } from "@/lib/workspace/store";
 import { useTheme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
@@ -221,7 +221,7 @@ export function AgentTab() {
             <>
               {view !== "git" && (
                 <select
-                  value={agent.framework}
+                  value={getFramework(agent.framework).id}
                   onChange={(e) => updateAgent({ framework: e.target.value })}
                   aria-label="Framework"
                   className="h-7 rounded-md border bg-background px-2 text-xs outline-none focus:border-primary"

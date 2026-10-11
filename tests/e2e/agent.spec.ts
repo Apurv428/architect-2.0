@@ -89,7 +89,7 @@ base.describe("Agent tab", () => {
     await openAgentTab(page);
     const picker = page
       .getByRole("combobox", { name: /framework/i })
-      .or(page.getByText(/Lyzr ADK|LangGraph|CrewAI|OpenAI|Claude Agent/i).first());
+      .or(page.getByText(/JSON blueprint|LangGraph|CrewAI|OpenAI|Claude Agent/i).first());
     await expect(picker).toBeVisible({ timeout: 8_000 });
     // Open the picker and check options.
     if (await page.getByRole("combobox", { name: /framework/i }).isVisible({ timeout: 3_000 }).catch(() => false)) {

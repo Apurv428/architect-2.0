@@ -107,7 +107,7 @@ describe("MCP blocks", () => {
   it("compile only connected servers, and never put the token in exported code", () => {
     const spec = compileAgent(graph, "Agent");
     expect(spec.mcpServers).toEqual([{ nodeId: "mcp", url: "https://mcp.example.com/mcp", token: "secret", description: "Company docs" }]);
-    for (const fw of ["langgraph", "crewai", "openai-agents", "claude-agent-sdk", "google-adk", "lyzr-adk"]) expect(generateCode(spec, fw)).not.toContain("secret");
+    for (const fw of ["langgraph", "crewai", "openai-agents", "claude-agent-sdk", "google-adk", "blueprint"]) expect(generateCode(spec, fw)).not.toContain("secret");
   });
 
   afterEach(() => vi.unstubAllGlobals());

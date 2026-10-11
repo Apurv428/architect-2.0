@@ -2,6 +2,7 @@
 
 import { SLACK_WEBHOOK_RE, type AgentGraph, type AgentRecord } from "@/lib/agent/types";
 import { McpSession, mcpToken } from "@/lib/agent/mcp";
+import { DEFAULT_FRAMEWORK } from "@/lib/catalog";
 import { decrypt, encrypt } from "@/lib/crypto";
 import { getUser } from "@/lib/supabase/server";
 import type { SlackResult } from "@/lib/workspace/sandbox";
@@ -26,7 +27,7 @@ export async function createAgent(projectId: string, name: string, graph: AgentG
   const { supabase } = await getUser();
   const { data, error } = await supabase
     .from("agents")
-    .insert({ project_id: projectId, name, graph: sealSecrets(graph), framework: framework ?? "lyzr-adk" })
+    .insert({ project_id: projectId, name, graph: sealSecrets(graph), framework: framework ?? DEFAULT_FRAMEWORK })
     .select(COLUMNS)
     .single();
   return error || !data ? { error: error?.message ?? "Could not create agent" } : { agent: data as AgentRecord };

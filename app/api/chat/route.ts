@@ -25,6 +25,7 @@ import {
   type WriteFiles,
 } from "@/lib/ai/schema";
 import { track } from "@/lib/analytics";
+import { getFramework } from "@/lib/catalog";
 import { tokensForPrompt, type DesignTokens } from "@/lib/design-tokens";
 import { OUT_OF_CREDITS, currentCredits, spendCredit } from "@/lib/credits";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
@@ -245,7 +246,7 @@ function turnContext({ project, action, files, history, slackConnected, brand, f
   return `<context>
 Mode: ${project.mode === "pro" ? "Pro" : "Guided"}
 Project: ${project.name}
-Slack: ${slackConnected ? "connected (the app's postToSlack posts for real)" : "not connected"}${brand ? `\n${brand}` : ""}${project.framework ? `\nPreferred agent framework: ${project.framework}` : ""}${
+Slack: ${slackConnected ? "connected (the app's postToSlack posts for real)" : "not connected"}${brand ? `\n${brand}` : ""}${project.framework ? `\nPreferred agent framework: ${getFramework(project.framework).name}` : ""}${
     project.github_repo || project.description?.startsWith("Imported from")
       ? fileList.length
         ? `\nImported project: ${project.description}\nIts real files are below. Keep working on them: edit files in place at the same paths, match the existing stack and style, and add only the files you need.${project.github_repo ? " Changes go back to the repo as a pull request." : ""}`

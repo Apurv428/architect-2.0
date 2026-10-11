@@ -1,5 +1,6 @@
 import "server-only";
 import { cookies } from "next/headers";
+import { DEFAULT_FRAMEWORK } from "@/lib/catalog";
 import { decrypt, encrypt } from "@/lib/crypto";
 import { pickImportFiles } from "@/lib/workspace/import";
 
@@ -101,7 +102,7 @@ const PY_STACK: [string, string][] = [
 const PY_AGENT: [string, string][] = [
   ["anthropic", "Anthropic SDK"], ["openai", "OpenAI SDK"], ["langchain", "LangChain"], ["langgraph", "LangGraph"], ["crewai", "CrewAI"],
   ["llama-index", "LlamaIndex"], ["llama_index", "LlamaIndex"], ["openai-agents", "OpenAI Agents SDK"], ["google-adk", "Google ADK"],
-  ["claude-agent-sdk", "Claude Agent SDK"], ["lyzr", "Lyzr"],
+  ["claude-agent-sdk", "Claude Agent SDK"],
 ];
 
 async function readFile(fullName: string, path: string, branch: string, token: string | null) {
@@ -196,7 +197,7 @@ export async function inspectRepo(fullName: string, token: string | null, branch
           ? "claude-agent-sdk"
           : agentList.includes("Google ADK")
             ? "google-adk"
-            : "lyzr-adk";
+            : DEFAULT_FRAMEWORK;
 
   const stackList = [...stack];
   const suggestions = agentList.length

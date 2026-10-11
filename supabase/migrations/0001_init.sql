@@ -89,7 +89,7 @@ create table public.agents (
   owner_id uuid not null default auth.uid() references auth.users (id) on delete cascade,
   project_id uuid references public.projects (id) on delete cascade,
   name text not null,
-  framework text not null default 'lyzr-adk',
+  framework text not null default 'blueprint',
   model text not null default 'claude-sonnet-5',
   system_prompt text,
   graph jsonb not null default '{"nodes":[],"edges":[]}'::jsonb,

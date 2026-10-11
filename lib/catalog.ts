@@ -141,13 +141,20 @@ export const TEMPLATES: Template[] = [
 ];
 
 export const FRAMEWORKS = [
-  { id: "lyzr-adk", name: "Lyzr ADK" },
+  { id: "blueprint", name: "JSON blueprint" },
   { id: "langgraph", name: "LangGraph" },
   { id: "crewai", name: "CrewAI" },
   { id: "openai-agents", name: "OpenAI Agents SDK" },
   { id: "claude-agent-sdk", name: "Claude Agent SDK" },
   { id: "google-adk", name: "Google ADK" },
 ] as const;
+
+export const DEFAULT_FRAMEWORK = FRAMEWORKS[0].id;
+
+/** An id this list doesn't know falls back to the JSON blueprint. */
+export function getFramework(id: string | null | undefined) {
+  return FRAMEWORKS.find((f) => f.id === id) ?? FRAMEWORKS[0];
+}
 
 export const ROLES = [
   { id: "founder", label: "Founder / PM", icon: Briefcase, hint: "I have an idea to ship" },

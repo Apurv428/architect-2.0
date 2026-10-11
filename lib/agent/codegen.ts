@@ -34,7 +34,7 @@ function customTools(spec: AgentSpec, decorator: string) {
 const toolNames = (spec: AgentSpec) => spec.tools.flatMap((t) => stubFor(t)?.fn ?? []);
 
 export const FRAMEWORK_LANG: Record<string, string> = {
-  "lyzr-adk": "json",
+  blueprint: "json",
   langgraph: "python",
   crewai: "python",
   "openai-agents": "python",
@@ -171,7 +171,7 @@ root_agent = Agent(
     default:
       return JSON.stringify(
         {
-          blueprint: "lyzr-agent-studio",
+          blueprint: "architect-agent",
           name: spec.name,
           model: spec.model,
           trigger: spec.trigger,
@@ -179,7 +179,7 @@ root_agent = Agent(
           tools: spec.tools,
           knowledge_base: spec.knowledge ? { type: "text", chars: spec.knowledge.length } : null,
           memory: spec.memory,
-          responsible_ai: { rules: spec.rules, pii_redaction: spec.redactPII },
+          guardrails: { rules: spec.rules, pii_redaction: spec.redactPII },
           output: spec.output,
         },
         null,
