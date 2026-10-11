@@ -211,8 +211,8 @@
     <dl class="meta" id="meta">
       <div><dt>Features</dt><dd id="m-total">—</dd></div>
       <div><dt>Fully real</dt><dd id="m-real">—</dd></div>
-      <div><dt>Challenge areas</dt><dd>8 of 8</dd></div>
-      <div><dt>Revised</dt><dd>27 Sep 2026</dd></div>
+      <div><dt>Core areas</dt><dd>8 of 8</dd></div>
+      <div><dt>Revised</dt><dd>12 Oct 2026</dd></div>
     </dl>
   </header>
 
@@ -251,7 +251,7 @@
     soon: { label: "Coming soon", cls: "s-soon" },
   };
 
-  // req: marks one of the eight areas the challenge asks for.
+  // req: marks one of the eight core areas of the product.
   const GROUPS = [
     { code: "A", title: "Getting started", blurb: "Signing in, first run, and managing projects.", items: [
       { name: "Authentication", status: "real", req: true, desc: "Email, Google and GitHub sign-in through Supabase Auth. Row-level security on every table; sign-in redirects only go to same-site paths." },
@@ -282,7 +282,7 @@
       { name: "Knowledge files", status: "real", desc: "Upload PDF, TXT or Markdown. Text is extracted per page, split into passages and ranked per question; answers cite file and page." },
       { name: "PII redaction", status: "real", desc: "Masks emails, phone numbers and card numbers in replies before they're shown." },
       { name: "Evals", status: "real", desc: "Saved tests per agent: contains, doesn't contain, or AI judge. Run all streams verdicts with progress and keeps pass-rate history. Save as test from any console run." },
-      { name: "Framework code", status: "gen", desc: "LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK and Lyzr blueprint starter code, kept in sync with the canvas. Not run by the platform." },
+      { name: "Framework code", status: "gen", desc: "LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK and JSON blueprint starter code, kept in sync with the canvas. Not run by the platform." },
     ]},
     { code: "D", title: "Shipping", blurb: "Put the app and its agent in front of people.", items: [
       { name: "Deployment", status: "real", req: true, desc: "Freezes a checkpoint to a public <code>/s/&lt;slug&gt;</code> link with a QR code. Preview and production, with one-click rollback." },
@@ -340,7 +340,7 @@
         <div class="group-head"><span class="code">${g.code}</span><h2 id="g-${g.code}">${g.title}</h2><p>${g.blurb}</p></div>
         <ul class="rows">${rows.map((i) => `<li class="row">
           <span class="ref">${i.ref}</span>
-          <span class="name">${i.name}${i.req ? `<br><span class="req">Challenge area</span>` : ""}</span>
+          <span class="name">${i.name}${i.req ? `<br><span class="req">Core area</span>` : ""}</span>
           <span class="status ${STATUS[i.status].cls}">${STATUS[i.status].label}</span>
           <span class="desc">${i.desc}</span>
         </li>`).join("")}</ul>

@@ -37,7 +37,7 @@ const PLANS = [
     note: "",
     blurb: "For regulated, at-scale orgs",
     cta: "Talk to us",
-    features: ["Lyzr Responsible AI suite", "VPC / on-prem deployment", "Audit logs & data residency", "SOC 2, ISO 27001", "Dedicated solutions architect"],
+    features: ["Responsible AI suite", "VPC / on-prem deployment", "Audit logs & data residency", "SOC 2, ISO 27001", "Dedicated solutions architect"],
   },
 ];
 

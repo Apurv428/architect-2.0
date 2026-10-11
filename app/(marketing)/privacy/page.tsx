@@ -64,7 +64,7 @@ export default function PrivacyPage() {
         <div className="space-y-2">
           <h1 className="text-3xl font-semibold tracking-tight">Privacy</h1>
           <p className="text-sm text-muted-foreground">
-            Architect 2.0 is a concept build made for a hiring challenge. This page says plainly what it stores and who else handles it.
+            Architect 2.0 is a personal project. This page says plainly what it stores and who else handles it.
           </p>
         </div>
         {SECTIONS.map((s) => (

@@ -41,10 +41,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Support ticket triage",
     description: "Classifies incoming tickets, drafts replies, and routes to the right team. Connects to Freshdesk, Jira and Slack.",
     category: "Support",
-    author: "Lyzr",
+    author: "Architect",
     stars: 2840,
     clones: 1240,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["slack", "freshdesk", "jira"],
     featured: true,
   },
@@ -53,7 +53,7 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Sales lead qualifier",
     description: "Scores inbound leads against your ICP, enriches with Apollo data, and drafts personalised outreach.",
     category: "Sales",
-    author: "Lyzr",
+    author: "Architect",
     stars: 1920,
     clones: 890,
     framework: "LangGraph",
@@ -65,10 +65,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "HR onboarding buddy",
     description: "Answers new-joiner questions from your handbook, tracks onboarding tasks, and escalates gaps to HR.",
     category: "HR",
-    author: "Lyzr",
+    author: "Architect",
     stars: 1540,
     clones: 670,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["notion", "slack", "google-docs"],
   },
   {
@@ -76,10 +76,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Document Q&A (RAG)",
     description: "Upload PDFs and ask questions. The agent answers with citations to the exact page it used.",
     category: "Knowledge",
-    author: "Lyzr",
+    author: "Architect",
     stars: 3210,
     clones: 1890,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["rag", "knowledge-base"],
     featured: true,
   },
@@ -88,7 +88,7 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Invoice extractor",
     description: "Pulls line items from invoice PDFs, flags anomalies, and exports a clean CSV to Google Sheets.",
     category: "Finance",
-    author: "Lyzr",
+    author: "Architect",
     stars: 980,
     clones: 430,
     framework: "Claude Agent SDK",
@@ -99,10 +99,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Meeting summarizer",
     description: "Takes a transcript, extracts decisions and action items with owners, and posts to Slack.",
     category: "Productivity",
-    author: "Lyzr",
+    author: "Architect",
     stars: 2100,
     clones: 1020,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["slack", "google-calendar"],
   },
   {
@@ -134,10 +134,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Data analyst agent",
     description: "Paste CSV data and ask plain-English questions. Produces charts, summaries and anomaly flags.",
     category: "Research",
-    author: "Lyzr",
+    author: "Architect",
     stars: 1870,
     clones: 840,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["google-sheets", "excel"],
   },
   {
@@ -169,10 +169,10 @@ const BLUEPRINTS: Blueprint[] = [
     name: "Customer feedback analyser",
     description: "Reads reviews and NPS responses, clusters themes, and posts a weekly digest to Notion.",
     category: "Support",
-    author: "Lyzr",
+    author: "Architect",
     stars: 1230,
     clones: 480,
-    framework: "Lyzr ADK",
+    framework: "JSON blueprint",
     tags: ["notion", "google-sheets"],
   },
 ];
@@ -193,7 +193,7 @@ function BlueprintCard({ bp, onClone }: { bp: Blueprint; onClone: (bp: Blueprint
             {bp.featured && <span className="shrink-0 rounded-full bg-primary/15 px-1.5 py-0.5 text-[10px] font-medium text-primary">Featured</span>}
             {bp.new && <span className="shrink-0 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-400">New</span>}
           </div>
-          <p className="text-[11px] text-muted-foreground">{bp.author === "Lyzr" ? "By Lyzr" : "By community"} · {bp.framework}</p>
+          <p className="text-[11px] text-muted-foreground">{bp.author === "Architect" ? "By Architect" : "By community"} · {bp.framework}</p>
         </div>
       </div>
       <p className="mb-3 flex-1 text-sm text-muted-foreground">{bp.description}</p>
@@ -243,7 +243,7 @@ export default function MarketplacePage() {
           </div>
           <h1 className="text-3xl font-bold tracking-tight">Ready-to-use agent blueprints</h1>
           <p className="max-w-xl text-muted-foreground">
-            Start from a production-grade blueprint built by Lyzr or the community. Clone it, customise it with AI, and deploy in minutes.
+            Start from a production-grade blueprint built by the Architect team or the community. Clone it, customise it with AI, and deploy in minutes.
           </p>
           <div className="flex flex-wrap gap-3">
             <div className="relative flex-1 min-w-48 max-w-sm">

@@ -37,7 +37,7 @@ const FEATURES = [
   { icon: Bot, title: "Agents are first-class", body: "Tools, memory, knowledge and guardrails built alongside your app — on a visual canvas or in code." },
   { icon: History, title: "Never stuck", body: "Checkpoints on every change, one-click restore, and auto-fix when something breaks." },
   { icon: FolderGit2, title: "Your code, your repo", body: "GitHub import, branches and PRs. Export anytime — no lock-in." },
-  { icon: Code2, title: "Pick your framework", body: "Lyzr ADK, LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK and more." },
+  { icon: Code2, title: "Pick your framework", body: "LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK and more." },
   { icon: ShieldCheck, title: "Safe by default", body: "Custom rules and automatic PII redaction on every reply — with a step-by-step trace of what the agent did." },
   { icon: Rocket, title: "Deploy in one click", body: "Public share links, preview and production environments, and instant rollback to any version." },
 ];

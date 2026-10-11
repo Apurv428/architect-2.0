@@ -32,7 +32,7 @@ How Architect 2.0 works today, and how it would run in the real world for thousa
 
 ## 2. From a prompt to a running app
 
-The judging asks for this walkthrough explicitly. Every step names the code that does it.
+Every step names the code that does it.
 
 1. **The user types an idea** on the dashboard or the landing page.
    - `createProject` stores the project and the first user message.

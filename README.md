@@ -15,7 +15,6 @@ Vibe-coding tools split the market in two:
 
 - **Beginner tools** (Lovable, Bolt, v0, Rocket, Emergent) make the first five minutes magical, then hit a wall. Users can't tell what was built, can't debug it, and get stuck when the AI breaks something.
 - **Pro tools** (Cursor, Claude Code, Codex, Replit Agent) are powerful but assume you read code. They are IDE-first, not app-first or agent-first.
-- **Architect today** is agent-first and enterprise-grade. But it feels intimidating to a non-technical user, and it doesn't meet engineers in their own repos and frameworks.
 
 ## 2. The insight
 
@@ -54,7 +53,7 @@ The same person can be non-technical about deployment and technical about prompt
 
 ## 5. Feature map: what's real vs. simulated
 
-All eight required features are present. I'd rather be explicit than let a demo overclaim. "Needs migration NNNN" means the feature works once that SQL file in `supabase/migrations/` has been run.
+I'd rather be explicit than let a demo overclaim. "Needs migration NNNN" means the feature works once that SQL file in `supabase/migrations/` has been run.
 
 | Feature | Status | Notes |
 |---|---|---|
@@ -75,7 +74,7 @@ All eight required features are present. I'd rather be explicit than let a demo 
 | — multi-agent | ✅ Real | A Coordinator block delegates to Specialist agents; the trace shows each hand-off (test console and evals; API, MCP, webhook and scheduled runs answer with the coordinator alone for now) |
 | — guardrails | ✅ Real | Rules in the prompt, "Safe AI" presets, PII redaction on replies |
 | — schedules | ✅ Real · needs 0017 + cron | Trigger "Schedule": times, weekdays and timezone; runs on time through `/api/cron/schedules` (see docs/ARCHITECTURE.md §10) |
-| — framework code | 🟡 Generated starter | LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK, Lyzr blueprint; kept in sync with the canvas, export-only |
+| — framework code | 🟡 Generated starter | LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK, JSON blueprint; kept in sync with the canvas, export-only |
 | **Evals** | ✅ Real | Saved tests (contains / doesn't contain / AI judge), pass-rate history, suggested tests sampled from real traffic (needs 0014) |
 | **Autopilot** (self-improving agents) | ✅ Real | Writes 6 scenarios aimed at *this* agent's job and rules (edge cases, injection, personal data, off-topic, invented promises), runs them, reads the failures, proposes new rules or rewritten instructions, applies them and re-tests everything: e.g. 3/6 → 6/6. Scenarios can be saved as regression tests |
 | **Agent API** | ✅ Real | Per-agent keys (`arc_live_…`, SHA-256 hashed, revocable), 60 requests/min, cURL/JS/Python snippets |
@@ -116,11 +115,11 @@ The full design is in **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)**. It cov
 - **Deploy = a frozen checkpoint,** so a live app never changes under a user's feet, and rollback is just choosing a different snapshot.
 
 **Tests:**
-- `npm test` runs Vitest: 146 unit tests. They cover schemas, imports and ZIP files, the tool catalog, MCP (client against a mocked server, and the agent-as-server protocol), Autopilot fixes, free-tier rate-limit retries, model routing, generated code, design tokens, GitAgent, artifacts, webhooks, evals, retrieval, encryption and redirects.
+- `npm test` runs Vitest: 151 unit tests. They cover schemas, imports and ZIP files, the tool catalog, MCP (client against a mocked server, and the agent-as-server protocol), Autopilot fixes, free-tier rate-limit retries, model routing, generated code, design tokens, GitAgent, artifacts, webhooks, evals, retrieval, encryption and redirects.
 - `npm run test:e2e` runs Playwright on desktop and mobile.
 - The SQL migrations are checked on a local Postgres: 69 checks of access rules, invites, sharing, webhooks, sampling and scheduling.
 
-**Data model:** see `supabase/migrations/` (0001–0017). Every table has row-level security.
+**Data model:** see `supabase/migrations/` (0001–0018). Every table has row-level security.
 
 ## 7. What I'd measure
 
@@ -147,7 +146,7 @@ npm install
 npm run dev                     # http://localhost:3000
 ```
 
-**Database.** Run every file in `supabase/migrations/` in order, `0001` → `0017`, in the Supabase SQL editor, or use `supabase db push`. Run `0001`–`0009` once; `0010` onwards are safe to re-run.
+**Database.** Run every file in `supabase/migrations/` in order, `0001` → `0018`, in the Supabase SQL editor, or use `supabase db push`. Run `0001`–`0009` once; `0010` onwards are safe to re-run.
 
 **Supabase Auth settings:**
 - **Site URL:** your app's URL.
@@ -165,4 +164,4 @@ npm run dev                     # http://localhost:3000
 
 ---
 
-Built for the Lyzr Architect hiring challenge. See also [`docs/product-spec.md`](docs/product-spec.md) and [`docs/competitive-teardown.md`](docs/competitive-teardown.md).
+A personal project by Apurv Sonawane. See also [`docs/product-spec.md`](docs/product-spec.md) and [`docs/competitive-teardown.md`](docs/competitive-teardown.md).

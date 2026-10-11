@@ -8,7 +8,6 @@ Test brief used for every tool: *"Build a support-ticket triage agent with a das
 
 | Platform | Positioning | Where it shines | Where users get stuck | What Architect 2.0 takes / avoids |
 |---|---|---|---|---|
-| **Architect.new (current)** | Text-to-agent for enterprises | Agent-first: tools, RAG, guardrails, APIs; strong governance story | Feels technical for business users; less of a "build a whole app" feel | Keep the agent depth; add plan-first guidance and a Guided mode |
 | **Lovable** | Prompt → full-stack web app | Beautiful first output, polished UX, Supabase integration | Hard to recover when the AI loops on a bug; little insight into what changed | Checkpoints + change summaries + auto-fix |
 | **Bolt.new** | In-browser full-stack dev environment | Instant running environment, real file system | Token burn on fix loops; code-first feel for beginners | Preview-first for Guided, code for Pro |
 | **Vercel v0** | UI / component generation | Top-quality UI and design system output | App logic and agents are secondary | Match the UI polish, but make the agent the core |
@@ -21,31 +20,6 @@ Test brief used for every tool: *"Build a support-ticket triage agent with a das
 ---
 
 ## Platform deep-dives
-
-### Architect.new (current version)
-
-**Product position:** enterprise agent platform. Technical users configure agents with tools (SQL, HTTP, email, CRM), RAG over documents, guardrails, and an API. It's a configuration product, not a build product.
-
-**Feature list:**
-- Agent canvas with tool configuration (not visual drag-and-drop)
-- Document ingestion (PDF, URL) with vector search
-- Guardrails: PII redaction, topic blocking
-- Agent API with keys and usage metrics
-- Team workspaces, roles, audit logs
-- No code generation; no live preview; no GitHub integration
-
-**UX and flows:**
-- Login → workspace → create agent → add tools → add knowledge → set guardrails → test → publish API key
-- No onboarding or templates; requires domain knowledge to configure
-- Test console shows a chat interface; no step-level trace visible to the user
-- ~8 clicks to get a first working agent
-
-**Gaps Architect 2.0 fills:**
-- Non-technical users cannot build here (no plan card, no Guided mode, no preview)
-- No generated app; agents are logic only, with no visual front-end
-- No GitHub import or PR flow for engineers
-
----
 
 ### Lovable
 
