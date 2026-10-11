@@ -79,8 +79,8 @@ export default function PrivacyPage() {
         ))}
         <p className="text-sm text-muted-foreground">
           Questions or deletion requests:{" "}
-          <a href="https://github.com/Apurv428/lyzr-architect-2.0/issues" className="text-primary hover:underline" target="_blank" rel="noreferrer">
-            github.com/Apurv428/lyzr-architect-2.0
+          <a href="https://github.com/Apurv428/architect-2.0/issues" className="text-primary hover:underline" target="_blank" rel="noreferrer">
+            github.com/Apurv428/architect-2.0
           </a>
           .
         </p>
